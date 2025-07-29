@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: 'Rajdhani', sans-serif;
+}
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, #022877 0%, #05ccc2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .bg-gradient-brand {
+    background: linear-gradient(135deg, #022877 0%, #05ccc2 100%);
+  }
+  
+  .hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(2, 40, 119, 0.3);
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+  
+  .card-3d {
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+  }
+  
+  .card-3d:hover {
+    transform: rotateY(10deg) rotateX(10deg);
+  }
+}
+
+.scroll-smooth {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Rajdhani', sans-serif;
+}
