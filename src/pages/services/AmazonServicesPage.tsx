@@ -1,8 +1,38 @@
 import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ShoppingCart, TrendingUp, Target, Settings, Award, CheckCircle } from 'lucide-react';
+import { ShoppingCart, TrendingUp, Target, Settings, Award, CheckCircle, X } from 'lucide-react';
+
+const CertificateModal: React.FC<{ 
+  isOpen: boolean; 
+  onClose: () => void; 
+  imageUrl: string; 
+  title: string; 
+}> = ({ isOpen, onClose, imageUrl, title }) => {
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
+      <div className="relative max-w-4xl w-full">
+        <button
+          onClick={onClose}
+          className="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors"
+        >
+          <X size={32} />
+        </button>
+        <img 
+          src={imageUrl} 
+          alt={title}
+          className="w-full h-auto rounded-lg shadow-2xl"
+        />
+      </div>
+    </div>
+  );
+};
 
 export const AmazonServicesPage: React.FC = () => {
+  const [selectedCertificate, setSelectedCertificate] = useState<{url: string, title: string} | null>(null);
+
   const services = [
     {
       icon: ShoppingCart,
@@ -96,26 +126,36 @@ export const AmazonServicesPage: React.FC = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                className="bg-white rounded-lg shadow-lg p-4"
+                className="bg-white rounded-lg shadow-lg p-4 cursor-pointer hover:shadow-xl transition-shadow"
+                onClick={() => setSelectedCertificate({
+                  url: 'https://i.postimg.cc/Qxn6v7zj/Ads-Certificate.png',
+                  title: 'Amazon Ads Certificate'
+                })}
               >
                 <img 
                   src="https://i.postimg.cc/Qxn6v7zj/Ads-Certificate.png" 
                   alt="Amazon Ads Certificate" 
                   className="w-full h-auto rounded-lg"
                 />
+                <p className="text-center mt-2 text-sm text-gray-600">📜 Certificate 1 - Click to view</p>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.4 }}
-                className="bg-white rounded-lg shadow-lg p-4"
+                className="bg-white rounded-lg shadow-lg p-4 cursor-pointer hover:shadow-xl transition-shadow"
+                onClick={() => setSelectedCertificate({
+                  url: 'https://i.postimg.cc/ZRcHHv3t/Certificate.png',
+                  title: 'Amazon Certificate'
+                })}
               >
                 <img 
                   src="https://i.postimg.cc/ZRcHHv3t/Certificate.png" 
                   alt="Amazon Certificate" 
                   className="w-full h-auto rounded-lg"
                 />
+                <p className="text-center mt-2 text-sm text-gray-600">📜 Certificate 2 - Click to view</p>
               </motion.div>
             </div>
           </motion.div>
@@ -158,6 +198,14 @@ export const AmazonServicesPage: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Certificate Modal */}
+      <CertificateModal
+        isOpen={selectedCertificate !== null}
+        onClose={() => setSelectedCertificate(null)}
+        imageUrl={selectedCertificate?.url || ''}
+        title={selectedCertificate?.title || ''}
+      />
     </div>
   );
 };

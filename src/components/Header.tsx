@@ -6,16 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const services = [
     { name: 'Amazon Services', path: '/services/amazon' },
@@ -26,32 +17,44 @@ export const Header: React.FC = () => {
     { name: 'UGC Content Creation', path: '/services/ugc-content' },
   ];
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 bg-white shadow-lg"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <Link to="/" className="flex items-center">
             <img 
-              src="https://i.postimg.cc/65ffrvr9/Logo-removebg-preview.png" 
+              src="https://i.postimg.cc/wvFxd6fP/Logo-1.png" 
               alt="Webifyra Logo" 
               className="h-10 w-auto object-contain"
             />
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center justify-center flex-1 space-x-8">
             <Link 
               to="/" 
               className={`font-medium transition-colors ${location.pathname === '/' ? 'text-[#05ccc2]' : 'text-[#022877] hover:text-[#05ccc2]'}`}
             >
               Home
             </Link>
+            
+            <button
+              onClick={() => scrollToSection('about')}
+              className="font-medium text-[#022877] hover:text-[#05ccc2] transition-colors"
+            >
+              About
+            </button>
             
             <div className="relative">
               <button
@@ -86,6 +89,13 @@ export const Header: React.FC = () => {
                 )}
               </AnimatePresence>
             </div>
+            
+            <button
+              onClick={() => scrollToSection('testimonials')}
+              className="font-medium text-[#022877] hover:text-[#05ccc2] transition-colors"
+            >
+              Reviews
+            </button>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -104,7 +114,7 @@ export const Header: React.FC = () => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden border-t bg-white/95 backdrop-blur-md"
+              className="md:hidden border-t bg-white"
             >
               <div className="py-4 space-y-2">
                 <Link
@@ -114,6 +124,15 @@ export const Header: React.FC = () => {
                 >
                   Home
                 </Link>
+                <button
+                  onClick={() => {
+                    scrollToSection('about');
+                    setIsMenuOpen(false);
+                  }}
+                  className="block px-4 py-2 text-[#022877] hover:text-[#05ccc2] font-medium w-full text-left"
+                >
+                  About
+                </button>
                 <div className="px-4 py-2">
                   <div className="text-[#022877] font-medium mb-2">Services</div>
                   {services.map((service) => (
@@ -127,6 +146,15 @@ export const Header: React.FC = () => {
                     </Link>
                   ))}
                 </div>
+                <button
+                  onClick={() => {
+                    scrollToSection('testimonials');
+                    setIsMenuOpen(false);
+                  }}
+                  className="block px-4 py-2 text-[#022877] hover:text-[#05ccc2] font-medium w-full text-left"
+                >
+                  Reviews
+                </button>
               </div>
             </motion.div>
           )}

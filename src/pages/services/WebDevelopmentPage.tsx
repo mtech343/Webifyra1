@@ -83,17 +83,12 @@ export const WebDevelopmentPage: React.FC = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
             {[
               { name: 'React', color: '#61DAFB' },
-              { name: 'Vue.js', color: '#4FC08D' },
               { name: 'Node.js', color: '#339933' },
-              { name: 'PHP', color: '#777BB4' },
-              { name: 'Python', color: '#3776AB' },
               { name: 'TypeScript', color: '#3178C6' },
               { name: 'Next.js', color: '#000000' },
-              { name: 'Laravel', color: '#FF2D20' },
               { name: 'MongoDB', color: '#47A248' },
               { name: 'MySQL', color: '#4479A1' },
-              { name: 'AWS', color: '#FF9900' },
-              { name: 'Docker', color: '#2496ED' }
+              { name: 'AWS', color: '#FF9900' }
             ].map((tech, index) => (
               <motion.div
                 key={tech.name}

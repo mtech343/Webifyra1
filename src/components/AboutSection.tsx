@@ -1,9 +1,62 @@
 import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+
+const AnimatedCounter: React.FC<{ end: number; suffix?: string; duration?: number }> = ({ 
+  end, 
+  suffix = '', 
+  duration = 2000 
+}) => {
+  const [count, setCount] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isVisible) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, [isVisible]);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    let startTime: number;
+    const animate = (currentTime: number) => {
+      if (!startTime) startTime = currentTime;
+      const progress = Math.min((currentTime - startTime) / duration, 1);
+      
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      setCount(Math.floor(easeOutQuart * end));
+      
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      }
+    };
+    
+    requestAnimationFrame(animate);
+  }, [isVisible, end, duration]);
+
+  return (
+    <div ref={ref} className="text-4xl font-bold text-[#05ccc2] mb-2">
+      {count}{suffix}
+    </div>
+  );
+};
 
 export const AboutSection: React.FC = () => {
   return (
-    <section className="py-20 bg-gray-50">
+    <section id="about" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -33,11 +86,11 @@ export const AboutSection: React.FC = () => {
             className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8"
           >
             <div className="text-center">
-              <div className="text-4xl font-bold text-[#05ccc2] mb-2">50+</div>
+              <AnimatedCounter end={50} suffix="+" />
               <div className="text-gray-600">Projects Completed</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-[#05ccc2] mb-2">100%</div>
+              <AnimatedCounter end={100} suffix="%" />
               <div className="text-gray-600">Client Satisfaction</div>
             </div>
             <div className="text-center">

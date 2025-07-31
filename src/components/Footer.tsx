@@ -13,15 +13,15 @@ export const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="bg-[#022877] text-white">
+    <footer className="bg-white text-[#022877] border-t border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Company */}
           <div>
-            <h3 className="text-xl font-semibold mb-4 text-[#05ccc2]">Company</h3>
+            <h3 className="text-xl font-semibold mb-4 text-[#022877]">Company</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/" className="hover:text-[#05ccc2] transition-colors">
+                <Link to="/" className="text-gray-600 hover:text-[#05ccc2] transition-colors">
                   About
                 </Link>
               </li>
@@ -30,13 +30,13 @@ export const Footer: React.FC = () => {
 
           {/* Services */}
           <div>
-            <h3 className="text-xl font-semibold mb-4 text-[#05ccc2]">Services</h3>
+            <h3 className="text-xl font-semibold mb-4 text-[#022877]">Services</h3>
             <ul className="space-y-2">
               {services.map((service) => (
                 <li key={service.path}>
                   <Link 
                     to={service.path} 
-                    className="hover:text-[#05ccc2] transition-colors text-sm"
+                    className="text-gray-600 hover:text-[#05ccc2] transition-colors text-sm"
                   >
                     {service.name}
                   </Link>
@@ -47,11 +47,11 @@ export const Footer: React.FC = () => {
 
           {/* Contact */}
           <div>
-            <h3 className="text-xl font-semibold mb-4 text-[#05ccc2]">Contact</h3>
+            <h3 className="text-xl font-semibold mb-4 text-[#022877]">Contact</h3>
             <div className="space-y-3">
               <a 
                 href="mailto:webifyra@gmail.com" 
-                className="flex items-center hover:text-[#05ccc2] transition-colors"
+                className="flex items-center text-gray-600 hover:text-[#05ccc2] transition-colors"
               >
                 <Mail className="h-4 w-4 mr-2" />
                 webifyra@gmail.com
@@ -60,7 +60,7 @@ export const Footer: React.FC = () => {
                 href="https://instagram.com/webifyra" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center hover:text-[#05ccc2] transition-colors"
+                className="flex items-center text-gray-600 hover:text-[#05ccc2] transition-colors"
               >
                 <Instagram className="h-4 w-4 mr-2" />
                 @webifyra
@@ -70,15 +70,15 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Logo and Copyright */}
-        <div className="border-t border-blue-800 mt-8 pt-8 text-center">
+        <div className="border-t border-gray-200 mt-8 pt-8 text-center">
           <div className="flex justify-center mb-4">
             <img 
-              src="https://i.postimg.cc/65ffrvr9/Logo-removebg-preview.png" 
+              src="https://i.postimg.cc/wvFxd6fP/Logo-1.png" 
               alt="Webifyra Logo" 
               className="h-12 w-auto object-contain"
             />
           </div>
-          <p className="text-sm text-blue-300">
+          <p className="text-sm text-gray-500">
             © 2025 Webifyra. All rights reserved.
           </p>
         </div>

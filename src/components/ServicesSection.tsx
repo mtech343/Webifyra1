@@ -1,51 +1,56 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ShoppingCart, Store, Target, Share2, Code, Video } from 'lucide-react';
 
 export const ServicesSection: React.FC = () => {
   const services = [
     {
-      icon: ShoppingCart,
+      icon: '🛒',
       title: 'Amazon Services',
       description: 'Product listing, optimization, PPC campaigns, and account management',
       path: '/services/amazon',
-      color: '#FF9900'
+      color: '#FF9900',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg'
     },
     {
-      icon: Store,
+      icon: '🛍️',
       title: 'Shopify Services',
       description: 'Store creation and comprehensive account management',
       path: '/services/shopify',
-      color: '#96BF48'
+      color: '#96BF48',
+      logo: 'https://cdn.worldvectorlogo.com/logos/shopify.svg'
     },
     {
-      icon: Target,
+      icon: '🎯',
       title: 'Meta Ads',
       description: 'Facebook & Instagram campaigns with advanced targeting',
       path: '/services/meta-ads',
-      color: '#1877F2'
+      color: '#1877F2',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg'
     },
     {
-      icon: Share2,
+      icon: '📱',
       title: 'Social Media Marketing',
       description: 'Content creation, scheduling, and growth management',
       path: '/services/social-media',
-      color: '#E1306C'
+      color: '#E1306C',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png'
     },
     {
-      icon: Code,
+      icon: '💻',
       title: 'Web Development',
       description: 'Business websites, landing pages, and admin panels',
       path: '/services/web-development',
-      color: '#61DAFB'
+      color: '#61DAFB',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg'
     },
     {
-      icon: Video,
+      icon: '🎬',
       title: 'UGC Content Creation',
       description: 'AI-based avatar reviews and personalized video content',
       path: '/services/ugc-content',
-      color: '#FF0000'
+      color: '#FF0000',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg'
     }
   ];
 
@@ -78,13 +83,16 @@ export const ServicesSection: React.FC = () => {
               <Link to={service.path} className="block group">
                 <div className="bg-white rounded-xl p-8 shadow-lg hover-lift card-3d border border-gray-100 h-full">
                   <div 
-                    className="w-16 h-16 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+                    className="w-16 h-16 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 relative overflow-hidden"
                     style={{ backgroundColor: `${service.color}20` }}
                   >
-                    <service.icon 
-                      size={32} 
-                      style={{ color: service.color }}
+                    <img 
+                      src={service.logo}
+                      alt={`${service.title} logo`}
+                      className="w-8 h-8 object-contain"
+                      style={{ filter: `brightness(0) saturate(100%) invert(0%) sepia(100%) saturate(7500%) hue-rotate(${service.color === '#FF9900' ? '35deg' : service.color === '#96BF48' ? '80deg' : service.color === '#1877F2' ? '220deg' : service.color === '#E1306C' ? '320deg' : service.color === '#61DAFB' ? '180deg' : '0deg'}) brightness(1)` }}
                     />
+                    <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/10 rounded-lg"></div>
                   </div>
                   
                   <h3 className="text-2xl font-semibold text-[#022877] mb-4 group-hover:text-[#05ccc2] transition-colors">
