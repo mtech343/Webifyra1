@@ -5,52 +5,52 @@ import { motion } from 'framer-motion';
 export const ServicesSection: React.FC = () => {
   const services = [
     {
-      icon: '🛒',
+      icon: 'https://img.icons8.com/?size=100&id=21295&format=png&color=000000',
       title: 'Amazon Services',
       description: 'Product listing, optimization, PPC campaigns, and account management',
       path: '/services/amazon',
       color: '#FF9900',
-      logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg'
+      isImage: true
     },
     {
-      icon: '🛍️',
+      icon: 'https://img.icons8.com/?size=100&id=uSHYbs6PJfMT&format=png&color=000000',
       title: 'Shopify Services',
       description: 'Store creation and comprehensive account management',
       path: '/services/shopify',
       color: '#96BF48',
-      logo: 'https://cdn.worldvectorlogo.com/logos/shopify.svg'
+      isImage: true
     },
     {
-      icon: '🎯',
+      icon: 'https://img.icons8.com/?size=100&id=PvvcWRWxRKSR&format=png&color=000000',
       title: 'Meta Ads',
       description: 'Facebook & Instagram campaigns with advanced targeting',
       path: '/services/meta-ads',
       color: '#1877F2',
-      logo: 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg'
+      isImage: true
     },
     {
-      icon: '📱',
+      icon: 'https://i.postimg.cc/59S1ZRG0/Social-Media-Marketing.png',
       title: 'Social Media Marketing',
       description: 'Content creation, scheduling, and growth management',
       path: '/services/social-media',
       color: '#E1306C',
-      logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png'
+      isImage: true
     },
     {
-      icon: '💻',
+      icon: 'https://i.postimg.cc/xC4jmqzc/Chat-GPT-Image-Aug-2-2025-08-47-59-AM.png',
       title: 'Web Development',
       description: 'Business websites, landing pages, and admin panels',
       path: '/services/web-development',
       color: '#61DAFB',
-      logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg'
+      isImage: true
     },
     {
-      icon: '🎬',
+      icon: 'https://i.postimg.cc/YSLX6Cjh/Chat-GPT-Image-Aug-2-2025-09-32-41-AM.png',
       title: 'UGC Content Creation',
       description: 'AI-based avatar reviews and personalized video content',
       path: '/services/ugc-content',
       color: '#FF0000',
-      logo: 'https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg'
+      isImage: true
     }
   ];
 
@@ -86,12 +86,15 @@ export const ServicesSection: React.FC = () => {
                     className="w-16 h-16 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 relative overflow-hidden"
                     style={{ backgroundColor: `${service.color}20` }}
                   >
-                    <img 
-                      src={service.logo}
-                      alt={`${service.title} logo`}
-                      className="w-8 h-8 object-contain"
-                      style={{ filter: `brightness(0) saturate(100%) invert(0%) sepia(100%) saturate(7500%) hue-rotate(${service.color === '#FF9900' ? '35deg' : service.color === '#96BF48' ? '80deg' : service.color === '#1877F2' ? '220deg' : service.color === '#E1306C' ? '320deg' : service.color === '#61DAFB' ? '180deg' : '0deg'}) brightness(1)` }}
-                    />
+                    {service.isImage ? (
+                      <img 
+                        src={service.icon}
+                        alt={`${service.title} icon`}
+                        className="w-10 h-10 object-contain"
+                      />
+                    ) : (
+                      <span className="text-2xl">{service.icon}</span>
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/10 rounded-lg"></div>
                   </div>
                   

@@ -6,7 +6,7 @@ import { TestimonialsSection } from '../components/TestimonialsSection';
 
 export const HomePage: React.FC = () => {
   return (
-    <div>
+    <div className="-mt-20">
       <HeroSection />
       <AboutSection />
       <ServicesSection />

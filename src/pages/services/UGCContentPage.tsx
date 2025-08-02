@@ -22,7 +22,7 @@ export const UGCContentPage: React.FC = () => {
   ];
 
   return (
-    <div className="pt-20">
+    <div>
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-br from-[#FF0000] to-[#FF6B6B] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

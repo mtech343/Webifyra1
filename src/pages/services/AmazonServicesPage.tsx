@@ -56,7 +56,7 @@ export const AmazonServicesPage: React.FC = () => {
   ];
 
   return (
-    <div className="pt-20">
+    <div>
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-br from-[#022877] to-[#05ccc2] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -113,6 +113,13 @@ export const AmazonServicesPage: React.FC = () => {
           >
             <div className="flex justify-center mb-6">
               <Award size={48} className="text-[#05ccc2]" />
+            </div>
+            <div className="flex justify-center mb-4">
+              <img 
+                src="https://i.postimg.cc/tC5TNvD0/amazon-ads-verified-partner.png"
+                alt="Amazon Ads Verified Partner"
+                className="h-16 w-auto object-contain"
+              />
             </div>
             <h2 className="text-4xl font-bold text-[#022877] mb-6">Amazon Ads Certified</h2>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto mb-12">

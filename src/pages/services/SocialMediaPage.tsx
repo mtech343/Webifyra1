@@ -22,7 +22,7 @@ export const SocialMediaPage: React.FC = () => {
   ];
 
   return (
-    <div className="pt-20">
+    <div>
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-br from-[#E1306C] to-[#405DE6] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -82,14 +82,26 @@ export const SocialMediaPage: React.FC = () => {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { name: 'Instagram', color: '#E1306C' },
-              { name: 'Facebook', color: '#1877F2' },
-              { name: 'LinkedIn', color: '#0A66C2' },
-              { name: 'Twitter', color: '#1DA1F2' },
-              { name: 'TikTok', color: '#000000' },
-              { name: 'YouTube', color: '#FF0000' },
-              { name: 'Pinterest', color: '#BD081C' },
-              { name: 'Snapchat', color: '#FFFC00' }
+              { 
+                name: 'Instagram', 
+                color: '#E1306C',
+                icon: 'https://img.icons8.com/?size=100&id=Xy10Jcu1L2Su&format=png&color=000000'
+              },
+              { 
+                name: 'Facebook', 
+                color: '#1877F2',
+                icon: 'https://img.icons8.com/?size=100&id=118497&format=png&color=000000'
+              },
+              { 
+                name: 'TikTok', 
+                color: '#000000',
+                icon: 'https://img.icons8.com/?size=100&id=118638&format=png&color=000000'
+              },
+              { 
+                name: 'YouTube', 
+                color: '#FF0000',
+                icon: 'https://img.icons8.com/?size=100&id=19318&format=png&color=000000'
+              }
             ].map((platform, index) => (
               <motion.div
                 key={platform.name}
@@ -100,6 +112,13 @@ export const SocialMediaPage: React.FC = () => {
                 className="bg-white rounded-lg p-6 text-center shadow-lg hover-lift"
                 style={{ borderTop: `4px solid ${platform.color}` }}
               >
+                <div className="flex justify-center mb-3">
+                  <img 
+                    src={platform.icon}
+                    alt={`${platform.name} icon`}
+                    className="w-8 h-8 object-contain"
+                  />
+                </div>
                 <h3 className="font-semibold text-[#022877]">{platform.name}</h3>
               </motion.div>
             ))}

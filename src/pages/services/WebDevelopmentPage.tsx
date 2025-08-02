@@ -22,7 +22,7 @@ export const WebDevelopmentPage: React.FC = () => {
   ];
 
   return (
-    <div className="pt-20">
+    <div>
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-br from-[#61DAFB] to-[#022877] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -87,8 +87,7 @@ export const WebDevelopmentPage: React.FC = () => {
               { name: 'TypeScript', color: '#3178C6' },
               { name: 'Next.js', color: '#000000' },
               { name: 'MongoDB', color: '#47A248' },
-              { name: 'MySQL', color: '#4479A1' },
-              { name: 'AWS', color: '#FF9900' }
+              { name: 'MySQL', color: '#4479A1' }
             ].map((tech, index) => (
               <motion.div
                 key={tech.name}

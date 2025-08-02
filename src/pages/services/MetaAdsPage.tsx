@@ -22,7 +22,7 @@ export const MetaAdsPage: React.FC = () => {
   ];
 
   return (
-    <div className="pt-20">
+    <div>
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-br from-[#1877F2] to-[#E1306C] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

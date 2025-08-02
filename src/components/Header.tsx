@@ -60,32 +60,32 @@ export const Header: React.FC = () => {
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className="fixed top-0 left-0 right-0 z-50 bg-white shadow-lg"
+      className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-4 relative">
+        <div className="flex justify-between items-center h-20 relative">
           {/* Desktop Logo - Left Side */}
           <button onClick={handleLogoClick} className="hidden md:flex items-center">
             <img 
               src="https://i.postimg.cc/9X7cF6Y4/Logo-1.png" 
               alt="Webifyra Logo" 
-              className="h-[120px] w-auto object-contain"
+              className="h-12 w-auto object-contain"
             />
           </button>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center justify-center flex-1 space-x-8">
+          <nav className="hidden md:flex items-center justify-center flex-1 space-x-6">
             <Link 
               to="/" 
               onClick={() => handleLogoClick()}
-              className="font-medium text-[#022877] hover:text-[#05ccc2] transition-colors"
+              className="font-medium text-[#022877] hover:text-[#05ccc2] transition-colors text-sm"
             >
               Home
             </Link>
             
             <button
               onClick={() => scrollToSection('about')}
-              className="font-medium text-[#022877] hover:text-[#05ccc2] transition-colors"
+              className="font-medium text-[#022877] hover:text-[#05ccc2] transition-colors text-sm"
             >
               About
             </button>
@@ -94,7 +94,7 @@ export const Header: React.FC = () => {
               <button
                 onMouseEnter={() => setIsServicesOpen(true)}
                 onMouseLeave={() => setIsServicesOpen(false)}
-                className="flex items-center font-medium text-[#022877] hover:text-[#05ccc2] transition-colors"
+                className="flex items-center font-medium text-[#022877] hover:text-[#05ccc2] transition-colors text-sm"
               >
                 Services
                 <ChevronDown className="ml-1 h-4 w-4" />
@@ -115,7 +115,7 @@ export const Header: React.FC = () => {
                         key={service.path}
                         to={service.path}
                         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                        className="block px-4 py-2 text-[#022877] hover:text-[#05ccc2] hover:bg-gray-50 transition-colors"
+                        className="block px-4 py-2 text-[#022877] hover:text-[#05ccc2] hover:bg-gray-50 transition-colors text-sm"
                       >
                         {service.name}
                       </Link>
@@ -127,22 +127,22 @@ export const Header: React.FC = () => {
             
             <button
               onClick={() => scrollToSection('testimonials')}
-              className="font-medium text-[#022877] hover:text-[#05ccc2] transition-colors"
+              className="font-medium text-[#022877] hover:text-[#05ccc2] transition-colors text-sm"
             >
               Reviews
             </button>
           </nav>
 
           {/* Spacer for desktop layout balance */}
-          <div className="hidden md:block w-[120px]"></div>
+          <div className="hidden md:block w-12"></div>
 
           {/* Mobile Logo and Menu */}
-          <div className="md:hidden flex items-center space-x-4">
+          <div className="md:hidden flex items-center justify-center flex-1">
             <button onClick={handleLogoClick} className="flex items-center">
               <img 
                 src="https://i.postimg.cc/9X7cF6Y4/Logo-1.png" 
                 alt="Webifyra Logo" 
-                className="h-[80px] w-auto object-contain"
+                className="h-10 w-auto object-contain"
               />
             </button>
           </div>
@@ -150,7 +150,7 @@ export const Header: React.FC = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 text-[#022877] ml-auto"
+            className="md:hidden p-2 text-[#022877] absolute right-0"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -165,14 +165,14 @@ export const Header: React.FC = () => {
               exit={{ opacity: 0, height: 0 }}
               className="md:hidden border-t bg-white"
             >
-              <div className="py-4 space-y-2">
+              <div className="py-3 space-y-1">
                 <Link
                   to="/"
                   onClick={() => {
                     handleLogoClick();
                     setIsMenuOpen(false);
                   }}
-                  className="block px-4 py-2 text-[#022877] hover:text-[#05ccc2] font-medium"
+                  className="block px-4 py-2 text-[#022877] hover:text-[#05ccc2] font-medium text-sm"
                 >
                   Home
                 </Link>
@@ -181,12 +181,12 @@ export const Header: React.FC = () => {
                     scrollToSection('about');
                     setIsMenuOpen(false);
                   }}
-                  className="block px-4 py-2 text-[#022877] hover:text-[#05ccc2] font-medium w-full text-left"
+                  className="block px-4 py-2 text-[#022877] hover:text-[#05ccc2] font-medium w-full text-left text-sm"
                 >
                   About
                 </button>
-                <div className="px-4 py-2">
-                  <div className="text-[#022877] font-medium mb-2">Services</div>
+                <div className="px-4 py-1">
+                  <div className="text-[#022877] font-medium mb-1 text-sm">Services</div>
                   {services.map((service) => (
                     <Link
                       key={service.path}
@@ -195,7 +195,7 @@ export const Header: React.FC = () => {
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                         setIsMenuOpen(false);
                       }}
-                      className="block pl-4 py-1 text-[#022877] hover:text-[#05ccc2] text-sm"
+                      className="block pl-4 py-1 text-[#022877] hover:text-[#05ccc2] text-xs"
                     >
                       {service.name}
                     </Link>
@@ -206,7 +206,7 @@ export const Header: React.FC = () => {
                     scrollToSection('testimonials');
                     setIsMenuOpen(false);
                   }}
-                  className="block px-4 py-2 text-[#022877] hover:text-[#05ccc2] font-medium w-full text-left"
+                  className="block px-4 py-2 text-[#022877] hover:text-[#05ccc2] font-medium w-full text-left text-sm"
                 >
                   Reviews
                 </button>

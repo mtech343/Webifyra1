@@ -21,9 +21,18 @@ export const Footer: React.FC = () => {
             <h3 className="text-xl font-semibold mb-4 text-[#022877]">Company</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/" className="text-gray-600 hover:text-[#05ccc2] transition-colors">
+                <button 
+                  onClick={() => {
+                    if (window.location.pathname !== '/') {
+                      window.location.href = '/#about';
+                    } else {
+                      document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                  className="text-gray-600 hover:text-[#05ccc2] transition-colors"
+                >
                   About
-                </Link>
+                </button>
               </li>
             </ul>
           </div>
@@ -57,7 +66,7 @@ export const Footer: React.FC = () => {
                 webifyra@gmail.com
               </a>
               <a 
-                href="https://instagram.com/webifyra" 
+                href="https://www.instagram.com/webifyra" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center text-gray-600 hover:text-[#05ccc2] transition-colors"
@@ -75,11 +84,11 @@ export const Footer: React.FC = () => {
             <p className="text-sm text-gray-500 text-center md:text-left mb-4 md:mb-0">
               © 2025 Webifyra. All rights reserved.
             </p>
-            <div className="flex justify-center md:justify-end pr-0 md:pr-5">
+            <div className="flex justify-center md:justify-end">
               <img 
-                src="https://i.postimg.cc/9X7cF6Y4/Logo-1.png" 
+                src="https://i.postimg.cc/wvFxd6fP/Logo-1.png" 
                 alt="Webifyra Logo" 
-                className="h-[70px] md:h-[100px] w-auto object-contain"
+                className="h-16 md:h-20 w-auto object-contain"
               />
             </div>
           </div>
