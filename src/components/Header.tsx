@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -7,6 +7,7 @@ export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const services = [
     { name: 'Amazon Services', path: '/services/amazon' },
@@ -18,9 +19,40 @@ export const Header: React.FC = () => {
   ];
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
+  const handleLogoClick = () => {
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        const element = document.getElementById('hero');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+    const element = document.getElementById('hero');
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
     }
   };
 
@@ -32,12 +64,21 @@ export const Header: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4 relative">
+          {/* Desktop Logo - Left Side */}
+          <button onClick={handleLogoClick} className="hidden md:flex items-center">
+            <img 
+              src="https://i.postimg.cc/9X7cF6Y4/Logo-1.png" 
+              alt="Webifyra Logo" 
+              className="h-[120px] w-auto object-contain"
+            />
+          </button>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center justify-center flex-1 space-x-8 mr-32">
+          <nav className="hidden md:flex items-center justify-center flex-1 space-x-8">
             <Link 
               to="/" 
-              className={`font-medium transition-colors ${location.pathname === '/' ? 'text-[#05ccc2]' : 'text-[#022877] hover:text-[#05ccc2]'}`}
+              onClick={() => handleLogoClick()}
+              className="font-medium text-[#022877] hover:text-[#05ccc2] transition-colors"
             >
               Home
             </Link>
@@ -73,6 +114,7 @@ export const Header: React.FC = () => {
                       <Link
                         key={service.path}
                         to={service.path}
+                        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                         className="block px-4 py-2 text-[#022877] hover:text-[#05ccc2] hover:bg-gray-50 transition-colors"
                       >
                         {service.name}
@@ -91,24 +133,18 @@ export const Header: React.FC = () => {
             </button>
           </nav>
 
-          {/* Desktop Logo - Top Right */}
-          <Link to="/" className="hidden md:flex items-center absolute top-1/2 right-5 transform -translate-y-1/2">
-            <img 
-              src="https://i.postimg.cc/9X7cF6Y4/Logo-1.png" 
-              alt="Webifyra Logo" 
-              className="h-[120px] w-auto object-contain"
-            />
-          </Link>
+          {/* Spacer for desktop layout balance */}
+          <div className="hidden md:block w-[120px]"></div>
 
           {/* Mobile Logo and Menu */}
           <div className="md:hidden flex items-center space-x-4">
-            <Link to="/" className="flex items-center">
+            <button onClick={handleLogoClick} className="flex items-center">
               <img 
                 src="https://i.postimg.cc/9X7cF6Y4/Logo-1.png" 
                 alt="Webifyra Logo" 
                 className="h-[80px] w-auto object-contain"
               />
-            </Link>
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -132,8 +168,11 @@ export const Header: React.FC = () => {
               <div className="py-4 space-y-2">
                 <Link
                   to="/"
+                  onClick={() => {
+                    handleLogoClick();
+                    setIsMenuOpen(false);
+                  }}
                   className="block px-4 py-2 text-[#022877] hover:text-[#05ccc2] font-medium"
-                  onClick={() => setIsMenuOpen(false)}
                 >
                   Home
                 </Link>
@@ -152,8 +191,11 @@ export const Header: React.FC = () => {
                     <Link
                       key={service.path}
                       to={service.path}
+                      onClick={() => {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        setIsMenuOpen(false);
+                      }}
                       className="block pl-4 py-1 text-[#022877] hover:text-[#05ccc2] text-sm"
-                      onClick={() => setIsMenuOpen(false)}
                     >
                       {service.name}
                     </Link>
