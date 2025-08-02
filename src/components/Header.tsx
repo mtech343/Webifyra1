@@ -31,17 +31,10 @@ export const Header: React.FC = () => {
       className="fixed top-0 left-0 right-0 z-50 bg-white shadow-lg"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-4">
-          <Link to="/" className="flex items-center">
-            <img 
-              src="https://i.postimg.cc/wvFxd6fP/Logo-1.png" 
-              alt="Webifyra Logo" 
-              className="h-10 w-auto object-contain"
-            />
-          </Link>
+        <div className="flex justify-between items-center py-4 relative">
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center justify-center flex-1 space-x-8">
+          <nav className="hidden md:flex items-center justify-center flex-1 space-x-8 mr-32">
             <Link 
               to="/" 
               className={`font-medium transition-colors ${location.pathname === '/' ? 'text-[#05ccc2]' : 'text-[#022877] hover:text-[#05ccc2]'}`}
@@ -98,10 +91,30 @@ export const Header: React.FC = () => {
             </button>
           </nav>
 
+          {/* Desktop Logo - Top Right */}
+          <Link to="/" className="hidden md:flex items-center absolute top-1/2 right-5 transform -translate-y-1/2">
+            <img 
+              src="https://i.postimg.cc/9X7cF6Y4/Logo-1.png" 
+              alt="Webifyra Logo" 
+              className="h-[120px] w-auto object-contain"
+            />
+          </Link>
+
+          {/* Mobile Logo and Menu */}
+          <div className="md:hidden flex items-center space-x-4">
+            <Link to="/" className="flex items-center">
+              <img 
+                src="https://i.postimg.cc/9X7cF6Y4/Logo-1.png" 
+                alt="Webifyra Logo" 
+                className="h-[80px] w-auto object-contain"
+              />
+            </Link>
+          </div>
+
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 text-[#022877]"
+            className="md:hidden p-2 text-[#022877] ml-auto"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>

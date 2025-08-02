@@ -70,8 +70,24 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Logo and Copyright */}
-        <div className="border-t border-gray-200 mt-8 pt-8 text-center">
-          <div className="flex justify-center mb-4">
+        <div className="border-t border-gray-200 mt-8 pt-8">
+          <div className="flex flex-col md:flex-row md:justify-between md:items-center">
+            <p className="text-sm text-gray-500 text-center md:text-left mb-4 md:mb-0">
+              © 2025 Webifyra. All rights reserved.
+            </p>
+            <div className="flex justify-center md:justify-end pr-0 md:pr-5">
+              <img 
+                src="https://i.postimg.cc/9X7cF6Y4/Logo-1.png" 
+                alt="Webifyra Logo" 
+                className="h-[70px] md:h-[100px] w-auto object-contain"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
             <img 
               src="https://i.postimg.cc/wvFxd6fP/Logo-1.png" 
               alt="Webifyra Logo" 
