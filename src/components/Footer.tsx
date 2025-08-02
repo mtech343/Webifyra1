@@ -88,17 +88,3 @@ export const Footer: React.FC = () => {
     </footer>
   );
 };
-            <img 
-              src="https://i.postimg.cc/wvFxd6fP/Logo-1.png" 
-              alt="Webifyra Logo" 
-              className="h-12 w-auto object-contain"
-            />
-          </div>
-          <p className="text-sm text-gray-500">
-            © 2025 Webifyra. All rights reserved.
-          </p>
-        </div>
-      </div>
-    </footer>
-  );
-};
