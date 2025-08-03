@@ -67,9 +67,9 @@ export const Header: React.FC = () => {
           {/* Desktop Logo - Left Side */}
           <button onClick={handleLogoClick} className="hidden md:flex items-center">
             <img 
-              src="https://i.postimg.cc/9X7cF6Y4/Logo-1.png" 
+              src="https://i.postimg.cc/kGL816N6/Logo-1.png" 
               alt="Webifyra Logo" 
-             className="h-12.5 w-auto object-contain"
+              className="h-[55px] w-auto object-contain"
             />
           </button>
 
@@ -140,9 +140,9 @@ export const Header: React.FC = () => {
           <div className="md:hidden flex items-center justify-center flex-1">
             <button onClick={handleLogoClick} className="flex items-center">
               <img 
-                src="https://i.postimg.cc/9X7cF6Y4/Logo-1.png" 
+                src="https://i.postimg.cc/kGL816N6/Logo-1.png" 
                 alt="Webifyra Logo" 
-               className="h-10.5 w-auto object-contain"
+                className="h-[55px] w-auto object-contain"
               />
             </button>
           </div>

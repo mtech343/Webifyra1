@@ -35,13 +35,17 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
     >
       {/* Logo */}
       <motion.div
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        initial={{ scale: 0.8, opacity: 0, filter: "drop-shadow(0 0 0px #05ccc2)" }}
+        animate={{ 
+          scale: 1, 
+          opacity: 1,
+          filter: "drop-shadow(0 0 20px #05ccc2)"
+        }}
+        transition={{ duration: 1, ease: "easeIn" }}
         className="mb-12"
       >
         <img 
-          src="https://i.postimg.cc/9X7cF6Y4/Logo-1.png" 
+          src="https://i.postimg.cc/kGL816N6/Logo-1.png" 
           alt="Webifyra Logo" 
           className="h-20 md:h-24 w-auto object-contain"
         />

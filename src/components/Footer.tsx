@@ -86,9 +86,9 @@ export const Footer: React.FC = () => {
             </p>
             <div className="flex justify-center md:justify-end">
               <img 
-                src="https://i.postimg.cc/wvFxd6fP/Logo-1.png" 
+                src="https://i.postimg.cc/kGL816N6/Logo-1.png" 
                 alt="Webifyra Logo" 
-                className="h-16 md:h-20 w-auto object-contain"
+                className="h-[42px] md:h-[50px] w-auto object-contain mt-4"
               />
             </div>
           </div>
