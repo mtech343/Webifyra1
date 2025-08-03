@@ -44,6 +44,14 @@
   .card-3d:hover {
     transform: rotateY(10deg) rotateX(10deg);
   }
+  
+  .h-12\.5 {
+    height: 50px;
+  }
+  
+  .h-10\.5 {
+    height: 42px;
+  }
 }
 
 .scroll-smooth {
