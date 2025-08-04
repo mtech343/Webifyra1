@@ -69,7 +69,7 @@ export const Header: React.FC = () => {
             <img 
               src="https://i.postimg.cc/kGL816N6/Logo-1.png" 
               alt="Webifyra Logo" 
-              className="h-[65px] w-auto object-contain"
+              className="h-[100px] w-auto object-contain"
             />
           </button>
 
