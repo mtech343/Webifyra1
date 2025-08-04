@@ -34,7 +34,7 @@ export const Footer: React.FC = () => {
               <img 
                 src="https://i.postimg.cc/kGL816N6/Logo-1.png" 
                 alt="Webifyra Logo" 
-                className="h-[50px] w-auto object-contain mx-auto lg:mx-0"
+                className="h-[70px] w-auto object-contain mx-auto lg:mx-0"
               />
             </div>
             <div className="flex justify-center lg:justify-start">
